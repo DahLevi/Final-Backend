@@ -16,13 +16,13 @@ router.post('/', (request, response, next) =>{
             title: bookJSON.title, // firstName: request.body.firstName
             description: bookJSON.description,
             year: bookJSON.year || 1970,
-            author : bookJSON.author || 0,
+            author : bookJSON.author,
             hardCover: bookJSON.hardCover || false,
             price: bookJSON.price || 15
         });
         book.save( (error) => {
             if (error){
-                response.send({"error - ": error});
+                response.send({"error ": error});
             }else{
                 response.send({"id": book.id});
             }
