@@ -9,15 +9,16 @@ function HandleError(response, reason, message, code){
 
 router.post('/', (request, response, next) =>{
     let bookJSON = request.body;
-    if (!bookJSON.firstName || !bookJSON.lastName)
+    if (!bookJSON.title)
         HandleError(response, 'Missing Information', 'Form Data Missing', 500);
     else{
         let book = new bookSchema({
-            firstName: bookJSON.firstName, // firstName: request.body.firstName
-            lastName: bookJSON.lastName,
-            gpa: bookJSON.gpa || 0,
-            credits : bookJSON.credits || 0,
-            major: bookJSON.major || 'Undecided'
+            title: bookJSON.title, // firstName: request.body.firstName
+            description: bookJSON.description,
+            year: bookJSON.year || 1970,
+            author : bookJSON.author || 0,
+            hardCover: bookJSON.hardCover || false,
+            price: bookJSON.price || 15
         });
         book.save( (error) => {
             if (error){
@@ -31,10 +32,10 @@ router.post('/', (request, response, next) =>{
 // Check Post with: db.books.find()
 
 router.get('/', (request, response, next)=>{
-    let name = request.query['name'];
-    if (name){
+    let title = request.query['title'];
+    if (title){
         bookSchema
-            .find({"firstName": name})
+            .find({"title": title})
             .exec( (error, books) =>{
                 if (error){
                     response.send({"error": error});
