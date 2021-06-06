@@ -64,7 +64,7 @@ router.get('/:id', (request, response, next) =>{
             }else if (result){
                 response.send(result);
             }else{
-                response.status(404).send({"id": request.params.id, "error": "Not Found"});
+                response.status(404).send({"id": request.params.id, "error": "Not Found (1)"});
             }
         });
 });
@@ -88,7 +88,7 @@ router.patch('/:id', (request, response, next) => {
                     response.send(book);
                 });
             }else{
-                response.status(404).send({"id": request.params.id, "error":  "Not Found"});
+                response.status(404).send({"id": request.params.id, "error":  "Not Found (2)"});
             }
         });
 });
@@ -106,7 +106,7 @@ router.delete('/:id', (request, response, next) => {
                     response.send({"deletedId": request.params.id});
                 });
             }else{
-                response.status(404).send({"id": request.params.id, "error":  "Not Found"});
+                response.status(404).send({"id": request.params.id, "error":  "Not Found (3)"});
             }
         });
 });
