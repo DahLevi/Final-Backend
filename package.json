@@ -10,7 +10,6 @@
     "start": "node ./bin/www",
     "test": "echo \"Error: no test available\" && exit 1"
   },
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
